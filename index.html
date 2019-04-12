@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sally Student Resume</title>
+</head>
+<body>
+    <div id="application-root"></div>
+
+<script
+  src="https://unpkg.com/react@16/umd/react.development.js">
+</script>
+<script
+  src="https://unpkg.com/react-dom@16/umd/react-dom.development.js">
+</script>
+<script
+    src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin>
+</script>
+<script type="text/babel">
+  // Our code will go here
+    const appRoot = document.querySelector('#application-root');
+    const phoneNumber = '301-555-1234';
+    const school = 'School of Hard Knocks, 2018'
+    const degree = 'Bachelor of Arts - Entrepreneurship'
+    const job1 = <div className='job1'>
+                    <h3>Starbucks - Barista</h3>     
+                    <p>Jan. 2018 - Present</p>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet</li>
+                        <li>Consectetur adipisicing elit</li>
+                    </ul>
+                </div>;
+    const job2 = <div className='job2'>
+                    <h3>McDonalds - Nugget Wrangler</h3>     
+                    <p>Jan. 2017 - Dec. 2017</p>
+                    <ol>
+                        <li>Catch Nugget</li>
+                        <li>Cook Nugget</li>
+                        <li>Consume Nugget</li>
+                    </ol>
+                </div>;
+
+    function App(props) {
+        console.log(props)
+        return <div className={props.container}>
+            <header>{props.children[0]}</header>               
+            <main>
+                {props.children[2]}
+                <address className={props.addressInfo}>
+                <p>Email: {props.children[1]}</p>
+                <p>Phone: <a href={'tel:+' + phoneNumber}>{phoneNumber}</a></p>
+                </address>
+                
+                <section>
+                    <h2>Education</h2>
+                    <p className='degree'>{degree}</p>
+                    <p className='school'>{school}</p>
+                </section>
+                
+                <section>
+                    <h2>Work Experience</h2>
+                    {job1}
+                    {job2}
+                </section>
+            </main>    
+      </div>
+    };
+    
+    ReactDOM.render(
+        <App container='my-resume' addressInfo='my-address'>
+            <h1>Sally Student</h1>
+            <a href="mailto:sally@student.com">sally@student.com</a>
+            <img src="https://ia.media-imdb.com/images/M/MV5BMTY5NzE3NzU3MF5BMl5BanBnXkFtZTgwMjg0NTQ5MDE@._V1_UX214_CR0,0,214,317_AL_.jpg" alt="A photo of Sally Student in yellow sweater"></img>
+
+        </App>,
+        appRoot);
+</script>
+</body>
+</html>
